@@ -7,6 +7,7 @@ st.set_page_config(page_title="💬 SpeechGPT")
 
 # Replicate Credentials
 with st.sidebar:
+    st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
     st.title('💬 SpeechGPT')
     st.write('This chatbot is created using the open-source Llama 2 LLM model from Meta.')
     if 'REPLICATE_API_TOKEN' in st.secrets:
