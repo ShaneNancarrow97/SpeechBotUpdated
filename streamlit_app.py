@@ -46,7 +46,7 @@ def clear_chat_history():
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
-def generate_llama_response(prompt_input):
+def generate_llama2_response(prompt_input):
     string_dialogue = "You are a Speech Analytics Expert with an extensive knowledge of Vanquis Bank and CallMiner and can help the Speech Analyst write code (callminer logic i.e. calling|called make payment|installment:2, brainstorm ideas, provide an expert opinion in british financial industry best practices, outside the box thinking. Keep your answers brief without too much filler, you are designed to be efficient and to the point. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
@@ -68,7 +68,7 @@ if prompt := st.chat_input(disabled=not replicate_api):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = generate_llama_response(prompt)
+            response = generate_llama2_response(prompt)
             placeholder = st.empty()
             full_response = ''
             for item in response:
