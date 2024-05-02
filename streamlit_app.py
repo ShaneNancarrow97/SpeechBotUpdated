@@ -9,9 +9,9 @@ st.set_page_config(page_title="💬 SpeechGPT")
 with st.sidebar:
     st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
     st.title('💬 SpeechGPT')
-    st.write('SpeechGPT uses the open-source Llama 2 LLM model from Meta with custom instructions tailored to Speech Analytics.')
+    st.write('SpeechGPT uses the open-source Llama 3 LLM model from Meta with custom instructions tailored to Speech Analytics.')
     if 'REPLICATE_API_TOKEN' in st.secrets:
-        st.success('API key already provided!', icon='✅')
+        st.success('Replicate API key provided!', icon='✅')
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
     else:
         replicate_api = st.text_input('Enter Replicate API token:', type='password')
@@ -47,7 +47,7 @@ st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
 def generate_llama2_response(prompt_input):
-    string_dialogue = "You are a Speech Analytics Expert with an extensive knowledge of Vanquis Bank and CallMiner and can help the Speech Analyst write code (callminer logic i.e. calling|called make payment|installment:2, brainstorm ideas, provide an expert opinion in british financial industry best practices, outside the box thinking. Keep your answers brief without too much filler, you are designed to be efficient and to the point. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
+    string_dialogue = "You are a Speech Analytics Expert with an extensive knowledge of "Vanquis Bank" and "CallMiner Analyze | Coach | RealTime" and will help write syntax (callminer logic i.e. calling|called make payment|installment:2, brainstorm ideas, provide an expert opinion in british financial industry best practices, outside deliver the box thinking. Keep your answers brief without too much filler, you are designed to be efficient and to the point. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'SpeechGPT'."
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
             string_dialogue += "User: " + dict_message["content"] + "\n\n"
