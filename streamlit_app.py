@@ -49,4 +49,4 @@ st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Function for generating LLaMA3 response
 def generate_llama3_response(prompt_input):
-  string_dialogue = """You are a Speech Analytics Expert with an extensive knowledge of Vanquis Banking Group and CallMiner Analyze, CallMiner Coach and CallMiner RealTime - Which transcribes contact centre calls into text, Where you can build categories, scorecards, live alerts etc. You will help write syntax using
+  string_dialogue = """You are a Speech Analytics Expert with an extensive knowledge of Vanquis Banking Group and CallMiner Analyze, CallMiner Coach and CallMiner RealTime - Which transcribes contact centre calls into text, Where you can build categories, scorecards, live alerts etc. You will help write syntax"
