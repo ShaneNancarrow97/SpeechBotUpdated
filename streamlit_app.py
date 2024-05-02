@@ -22,13 +22,11 @@ with st.sidebar:
     os.environ['REPLICATE_API_TOKEN'] = replicate_api
 
     st.subheader('Models and parameters')
-    selected_model = st.sidebar.selectbox('Choose a Llama3 model', ['Llama3-8B', 'Llama3-70B', 'phi-3-mini'], key='selected_model')
-    if selected_model == 'Llama3-70B':
-        llm = 'meta/meta-llama-3-70b-instruct'
+    selected_model = st.sidebar.selectbox('Choose a Llama3 model', ['Llama3-8B', 'phi-3-mini'], key='selected_model')
+    if selected_model == 'phi-3-mini':
+        llm = 'lucataco/phi-3-mini-128k-instruct'
     elif selected_model == 'Llama3-8B':
         llm = 'meta/meta-llama-3-8b-instruct'
-    elif selected_model == 'phi-3-mini':
-        llm = 'lucataco/phi-3-mini-128k-instruct'
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=1.0, value=0.5, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.5, step=0.01)
     max_new_tokens = st.sidebar.slider('max_new_tokens', min_value=500, max_value=80000, value=80000, step=5)
