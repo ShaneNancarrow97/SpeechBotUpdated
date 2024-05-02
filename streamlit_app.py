@@ -29,7 +29,7 @@ with st.sidebar:
         llm = 'meta/meta-llama-3-8b-instruct'
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=1.0, value=0.5, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.5, step=0.01)
-    max_tokens = st.sidebar.slider('max_tokens', min_value=500, max_value=2500, value=2500, step=5)
+    max_new_tokens = st.sidebar.slider('max_new_tokens', min_value=500, max_value=2500, value=2500, step=5)
     st.markdown('# Link to [CallMiner Analyze](https://vanquisbank.callminer.net)')
 
 # Store LLM generated responses
@@ -55,7 +55,7 @@ def generate_llama2_response(prompt_input):
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
     output = replicate.run('meta/meta-llama-3-8b-instruct', 
                            input={"prompt": f"{string_dialogue} {prompt_input} Assistant: ",
-                                  "temperature":temperature, "top_p":top_p, "max_tokens":max_tokens, "repetition_penalty":1, "length_penalty":1})
+                                  "temperature":temperature, "top_p":top_p, "max_new_tokens":max_new_tokens, "repetition_penalty":1})
     return output
 
 # User-provided prompt
