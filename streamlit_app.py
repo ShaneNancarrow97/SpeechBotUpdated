@@ -29,7 +29,7 @@ with st.sidebar:
         llm = 'meta/meta-llama-3-8b-instruct'
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=1.0, value=0.5, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.5, step=0.01)
-    max_new_tokens = st.sidebar.slider('max_new_tokens', min_value=500, max_value=2500, value=2500, step=5)
+    max_new_tokens = st.sidebar.slider('max_new_tokens', min_value=500, max_value=8000, value=8000, step=5)
     st.markdown('# Link to [CallMiner Analyze](https://vanquisbank.callminer.net)')
 
 # Store LLM generated responses
