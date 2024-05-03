@@ -11,6 +11,7 @@ if agree:
     st.markdown(
         "## [INSERT TRANSCRIPT HERE]\n" 
         "Please Fill In The Below Based On The Above Transcript -\n"
+        "```python\n"
         "Call Reason:\n"
         "Action Required:\n"
         "Agent Conduct:\n"
@@ -19,7 +20,8 @@ if agree:
         "Customer Snoop Response Summary:\n"
         "Success/Failed Promotion:\n"
         "Feedback on call general:\n"
-        "Feedback on snoop topic:\n")
+        "Feedback on snoop topic:\n"
+        "```\n")
 
 # Replicate Credentials
 with st.sidebar:
