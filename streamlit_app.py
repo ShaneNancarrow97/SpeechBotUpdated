@@ -13,6 +13,7 @@ if agree:
         "#### [INSERT TRANSCRIPT HERE]\n"
         "\n"
         "Please Fill In The Below Based On The Above Transcript -\n"
+        "\n"
         "Call Reason:\n"
         "Action Required:\n"
         "Agent Conduct:\n"
