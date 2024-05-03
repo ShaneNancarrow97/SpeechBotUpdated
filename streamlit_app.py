@@ -27,6 +27,11 @@ if agree:
 # Add horizontal line
 st.divider()
 
+uploaded_file = st.file_uploader("Add text file !")
+if uploaded_file:
+    for line in uploaded_file:
+        st.write(line)
+
 # Replicate Credentials
 with st.sidebar:
     st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
