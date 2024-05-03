@@ -21,7 +21,7 @@ if agree:
     integrate_uploaded_file(uploaded_file)
    
 # Snoop Template
-agree = st.checkbox("Snoop Template")
+agree = st.checkbox("👀 Snoop Template")
 if agree:
     st.markdown(
         "```python\n"
