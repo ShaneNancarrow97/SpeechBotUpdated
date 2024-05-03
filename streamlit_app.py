@@ -30,7 +30,7 @@ def integrate_uploaded_file(uploaded_file):
     try:
       file_content = uploaded_file.read().decode("utf-8")
       # Directly assign content to user input field
-      st.markdown("Transcript", value=file_content.strip())
+      st.text_area("Transcript", value=file_content.strip())
     except Exception as e:
       st.error("Error reading uploaded file:", e)
 
