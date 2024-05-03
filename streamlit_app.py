@@ -9,9 +9,9 @@ agree = st.checkbox("Snoop Template")
 
 if agree:
     st.markdown(
+        "```python\n"
         "#### [INSERT TRANSCRIPT HERE]\n" 
         "Please Fill In The Below Based On The Above Transcript -\n"
-        "```python\n"
         "Call Reason:\n"
         "Action Required:\n"
         "Agent Conduct:\n"
