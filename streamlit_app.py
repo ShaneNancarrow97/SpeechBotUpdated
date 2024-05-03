@@ -30,8 +30,7 @@ st.divider()
 # Replicate Credentials
 with st.sidebar:
     st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
-    st.title('💬 SpeechGPT')
-    st.divider()
+    st.title('# 💬 SpeechGPT')
     st.write('SpeechGPT uses the open-source Llama 3 LLM model from Meta with custom instructions tailored to Speech Analytics.')
     if 'REPLICATE_API_TOKEN' in st.secrets:
         st.success('Replicate API key provided!', icon='✅')
