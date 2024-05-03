@@ -27,10 +27,28 @@ if agree:
 # Add horizontal line
 st.divider()
 
-uploaded_file = st.file_uploader("Add text file !")
+# File Upload Integration
+def integrate_uploaded_file(uploaded_file):
+  if uploaded_file is not None:
+    try:
+      file_content = uploaded_file.read().decode("utf-8")
+      # Clear any existing content in the user input box
+      st.session_state["user_input"] = ""
+      # Append the uploaded file content to the user input
+      st.session_state["user_input"] += file_content.strip()
+      st.success("Transcript file content uploaded and added to the input box!")
+    except Exception as e:
+      st.error("Error reading uploaded file:", e)
+
+uploaded_file = st.file_uploader("Add Transcipt Notepad.txt File")
 if uploaded_file:
-    for line in uploaded_file:
-        st.write(line)
+  integrate_uploaded_file(uploaded_file)
+
+# Text File Upload (optional)
+uploaded_text_file = st.file_uploader("Add text file !")
+if uploaded_text_file:
+  for line in uploaded_text_file:
+    st.write(line)
 
 # Replicate Credentials
 with st.sidebar:
