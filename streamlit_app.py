@@ -5,6 +5,24 @@ import os
 # App title
 st.set_page_config(page_title="💬 SpeechGPT")
 
+agree = st.checkbox("Snoop Template")
+
+if agree:
+    st.write("""
+    [INSERT TRANSCRIPT HERE] 
+
+    Please Fill In The Below Based On The Above Transcript -
+    Call Reason:
+    Action Required:
+    Agent Conduct:
+    Customer Experience:
+    Agent Snoop Pitch Summary:
+    Customer Snoop Response Summary:
+    Success/Failed Promotion:
+    Feedback on call general:
+    Feedback on snoop topic:
+    """)
+
 # Replicate Credentials
 with st.sidebar:
     st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
