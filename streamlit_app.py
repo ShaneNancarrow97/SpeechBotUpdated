@@ -5,7 +5,7 @@ import os
 # App title
 st.set_page_config(page_title="SpeechGPT💬", layout="wide")
  
-agree = st.checkbox("📁 Transcript.txt File ~ [⚠️ REMOVE PCI / GDPR DATA ⚠️]")
+agree = st.checkbox("📁 Transcript.txt File ~~~ [⚠️ Remove PCI / GDPR Data ⚠️]")
 if agree:
   def integrate_uploaded_file(uploaded_file):
     if uploaded_file is not None:
