@@ -8,20 +8,18 @@ st.set_page_config(page_title="💬 SpeechGPT")
 agree = st.checkbox("Snoop Template")
 
 if agree:
-    st.write("""
-    [INSERT TRANSCRIPT HERE] 
-
-    Please Fill In The Below Based On The Above Transcript -
-    Call Reason:
-    Action Required:
-    Agent Conduct:
-    Customer Experience:
-    Agent Snoop Pitch Summary:
-    Customer Snoop Response Summary:
-    Success/Failed Promotion:
-    Feedback on call general:
-    Feedback on snoop topic:
-    """)
+    st.markdown(
+        "## [INSERT TRANSCRIPT HERE]\n" 
+        "Please Fill In The Below Based On The Above Transcript -\n"
+        "Call Reason:\n"
+        "Action Required:\n"
+        "Agent Conduct:\n"
+        "Customer Experience:\n"
+        "Agent Snoop Pitch Summary:\n"
+        "Customer Snoop Response Summary:\n"
+        "Success/Failed Promotion:\n"
+        "Feedback on call general:\n"
+        "Feedback on snoop topic:\n")
 
 # Replicate Credentials
 with st.sidebar:
