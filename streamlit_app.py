@@ -4,6 +4,20 @@ import os
 
 # App title
 st.set_page_config(page_title="SpeechGPT💬", layout="wide")
+ 
+# File Upload Integration
+def integrate_uploaded_file(uploaded_file):
+  if uploaded_file is not None:
+    try:
+      file_content = uploaded_file.read().decode("utf-8")
+      # Directly assign content to user input field
+      st.text_area("Transcript", value=file_content.strip())
+    except Exception as e:
+      st.error("Error reading uploaded file:", e)
+
+uploaded_file = st.file_uploader("Add Transcript")
+if uploaded_file:
+  integrate_uploaded_file(uploaded_file)
 
 # Snoop Template
 agree = st.checkbox("Snoop Template")
@@ -24,20 +38,6 @@ if agree:
         "Feedback on call general:\n"
         "Feedback on snoop topic:\n"
         "```\n")
- 
-# File Upload Integration
-def integrate_uploaded_file(uploaded_file):
-  if uploaded_file is not None:
-    try:
-      file_content = uploaded_file.read().decode("utf-8")
-      # Directly assign content to user input field
-      st.text_area("Transcript", value=file_content.strip())
-    except Exception as e:
-      st.error("Error reading uploaded file:", e)
-
-uploaded_file = st.file_uploader("Add Transcript")
-if uploaded_file:
-  integrate_uploaded_file(uploaded_file)
 
 # Add horizontal line
 st.divider()
