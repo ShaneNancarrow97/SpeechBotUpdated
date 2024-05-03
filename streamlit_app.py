@@ -5,8 +5,6 @@ import os
 # App title
 st.set_page_config(page_title="SpeechGPT💬", layout="wide")
 
-col1, col2 = st.columns(2)
-with col1:
 # Snoop Template
  agree = st.checkbox("Snoop Template")
 if agree:
@@ -26,7 +24,7 @@ if agree:
         "Feedback on call general:\n"
         "Feedback on snoop topic:\n"
         "```\n")
-with col2:
+ 
 # File Upload Integration
  def integrate_uploaded_file(uploaded_file):
   if uploaded_file is not None:
