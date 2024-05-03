@@ -5,8 +5,8 @@ import os
 # App title
 st.set_page_config(page_title="💬 SpeechGPT", layout="wide")
 
+# Snoop Template
 agree = st.checkbox("Snoop Template")
-
 if agree:
     st.markdown(
         "```python\n"
@@ -24,11 +24,14 @@ if agree:
         "Feedback on call general:\n"
         "Feedback on snoop topic:\n"
         "```\n")
+# Add horizontal line
+st.divider()
 
 # Replicate Credentials
 with st.sidebar:
     st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
     st.title('💬 SpeechGPT')
+    st.divider()
     st.write('SpeechGPT uses the open-source Llama 3 LLM model from Meta with custom instructions tailored to Speech Analytics.')
     if 'REPLICATE_API_TOKEN' in st.secrets:
         st.success('Replicate API key provided!', icon='✅')
