@@ -41,16 +41,8 @@ uploaded_file = st.file_uploader("Add Transcipt Notepad.txt File")
 if uploaded_file:
   integrate_uploaded_file(uploaded_file)
 
-# Text File Upload (optional)
-uploaded_text_file = st.file_uploader("Add text file !")
-if uploaded_text_file:
-  for line in uploaded_text_file:
-    st.write(line)
-
-
 # Add horizontal line
 st.divider()
-
 
 # Replicate Credentials
 with st.sidebar:
