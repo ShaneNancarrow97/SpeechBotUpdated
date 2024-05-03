@@ -34,7 +34,7 @@ def integrate_uploaded_file(uploaded_file):
     except Exception as e:
       st.error("Error reading uploaded file:", e)
 
-uploaded_file = st.file_uploader()
+uploaded_file = st.file_uploader("Add Transcript")
 if uploaded_file:
   integrate_uploaded_file(uploaded_file)
 
