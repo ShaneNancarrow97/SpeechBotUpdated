@@ -31,11 +31,10 @@ def integrate_uploaded_file(uploaded_file):
       file_content = uploaded_file.read().decode("utf-8")
       # Directly assign content to user input field
       st.text_input("Transcript", value=file_content.strip())
-      st.success("Transcript file content uploaded and displayed!")
     except Exception as e:
       st.error("Error reading uploaded file:", e)
 
-uploaded_file = st.file_uploader("Add Transcipt Notepad.txt File")
+uploaded_file = st.file_uploader()
 if uploaded_file:
   integrate_uploaded_file(uploaded_file)
 
