@@ -24,9 +24,6 @@ if agree:
         "Feedback on call general:\n"
         "Feedback on snoop topic:\n"
         "```\n")
-# Add horizontal line
-st.divider()
-
 # File Upload Integration
 def integrate_uploaded_file(uploaded_file):
   if uploaded_file is not None:
@@ -49,6 +46,11 @@ uploaded_text_file = st.file_uploader("Add text file !")
 if uploaded_text_file:
   for line in uploaded_text_file:
     st.write(line)
+
+
+# Add horizontal line
+st.divider()
+
 
 # Replicate Credentials
 with st.sidebar:
