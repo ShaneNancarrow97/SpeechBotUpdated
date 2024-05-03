@@ -6,7 +6,7 @@ import os
 st.set_page_config(page_title="SpeechGPT💬", layout="wide")
 
 # Snoop Template
- agree = st.checkbox("Snoop Template")
+agree = st.checkbox("Snoop Template")
 if agree:
     st.markdown(
         "```python\n"
@@ -26,7 +26,7 @@ if agree:
         "```\n")
  
 # File Upload Integration
- def integrate_uploaded_file(uploaded_file):
+def integrate_uploaded_file(uploaded_file):
   if uploaded_file is not None:
     try:
       file_content = uploaded_file.read().decode("utf-8")
