@@ -8,7 +8,7 @@ st.set_page_config(page_title="SpeechGPT💬", layout="wide")
 # File Upload Integration
 agree = st.checkbox("Upload Transcript File")
 if agree:
- def integrate_uploaded_file(uploaded_file):
+ (def integrate_uploaded_file(uploaded_file):
   if uploaded_file is not None:
     try:
       file_content = uploaded_file.read().decode("utf-8")
@@ -19,7 +19,7 @@ if agree:
 
 uploaded_file = st.file_uploader("Add Transcript")
 if uploaded_file:
-  integrate_uploaded_file(uploaded_file)
+  integrate_uploaded_file(uploaded_file))
 
 # Snoop Template
 agree = st.checkbox("Snoop Template")
