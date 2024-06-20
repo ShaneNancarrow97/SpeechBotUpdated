@@ -130,7 +130,7 @@ Here are some examples of how to use the provided syntax:
 
 * **Find calls where the agent says 'Thank you for calling' and the customer says 'Goodbye'**: `"Thank you for calling"=Agent AND "Goodbye"=Customer`
 * **Find calls where the customer says 'card' followed by any 5 digits:** `"card #####"=Customer`
-* **Find calls where the customer says 'account' not near their personal current account:** '(account NOT NEAR:3 current)=customer' - where NOT NEAR:3 means that current is not appearing 3 seconds before or after the word current. This is also measured in seconds. '"my account":2 NOT NEAR:0 (husband*|wife*|wive*)' would return my account when said within 2 seconds where it's not near 0 seconds of husband or wife, including where a customer might say 'my husband's account'
+* **Find calls where the customer says 'account' not near their personal current account:** '(account NOT NEAR:3 current)=customer' - where NOT NEAR:3 means that current is not appearing 3 seconds before or after the word current. This is also measured in seconds. '"my account":2 NOT NEAR:0 (husband*|wife*|wive*)' would return 'my account' where it's not near '0' seconds of husband or wife, including where a customer might say 'my husband's account'
 * **Find calls where the customer says 'app issues' within a specific amount of seconds '"having issues with app":3.4' where 3.4 is how many seconds the phrase can be said within to be returned by the search
 
 Please provide the most effective CallMiner syntax based on the user's request, considering all the elements and examples provided. 
