@@ -4,9 +4,10 @@ import os
 
 # App title
 st.set_page_config(page_title="SpeechGPT💬", layout="wide")
- 
+
 agree = st.checkbox("📁 Transcript.txt File / ⚠️ Remove GDPR Data ⚠️")
 if agree:
+
   def integrate_uploaded_file(uploaded_file):
     if uploaded_file is not None:
       try:
@@ -19,7 +20,8 @@ if agree:
   uploaded_file = st.file_uploader("Add Transcript")
   if uploaded_file:
     integrate_uploaded_file(uploaded_file)
-   
+
+
 # Snoop Template
 agree = st.checkbox("👀 Snoop Template")
 if agree:
@@ -47,13 +49,14 @@ st.divider()
 with st.sidebar:
     st.image("https://asset.brandfetch.io/idW9qdsCe9/idplAtYV0V.png")
     st.title('SpeechGPT💬')
-    st.write('SpeechGPT uses the open-source Llama 3 LLM model from Meta with custom instructions tailored to Speech Analytics.')
+    st.write(
+        'SpeechGPT uses the open-source Llama 3 LLM model from Meta with custom instructions tailored to Speech Analytics.')
     if 'REPLICATE_API_TOKEN' in st.secrets:
         st.success('Replicate API key provided!', icon='✅')
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
     else:
         replicate_api = st.text_input('Enter Replicate API token:', type='password')
-        if not (replicate_api.startswith('r8_') and len(replicate_api)==40):
+        if not (replicate_api.startswith('r8_') and len(replicate_api) == 40):
             st.warning('Please enter your credentials!', icon='⚠️')
         else:
             st.success('Proceed to entering your prompt message!', icon='👉')
@@ -70,31 +73,77 @@ with st.sidebar:
     max_new_tokens = st.sidebar.slider('max_new_tokens', min_value=500, max_value=80000, value=80000, step=5)
     st.markdown('# Link to [CallMiner Analyze](https://vanquisbank.callminer.net)')
 
+
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "Hello I am SpeechGPT, Please let me know how I can help you today? 😊"}]
+    st.session_state.messages = [
+        {"role": "assistant",
+         "content": "Hello I am SpeechGPT, Please let me know how I can help you today? 😊"}]
+
 
 # Display or clear chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "Hello I am SpeechGPT, Please let me know how I can help you today? 😊"}]
+    st.session_state.messages = [
+        {"role": "assistant",
+         "content": "Hello I am SpeechGPT, Please let me know how I can help you today? 😊"}]
+
+
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+
 
 # Function for generating LLaMA3 response
 def generate_llama3_response(prompt_input):
-    string_dialogue = """You are a Speech Analytics Expert with an extensive knowledge of Vanquis Banking Group and CallMiner Analyze, CallMiner Coach and CallMiner RealTime - Which transcribes contact centre calls into text, Where you can build categories, scorecards, live alerts etc. You will help write syntax using Callminer logic i.e. "calling|called make payment|installment:2" (always put quotes around a syntax phrase) which uses AND logic = Use a blank space as a separator or the word AND. / OR logic = Use a vertical bar (|) or the word OR. / PHRASE logic = Use double quotes " " around a set of words to find the words in that exact order in a given timeframe. Don't use around single words. / CLOSE-TO logic = Use square brackets [ ] around a set of words to find those words in any order during a given timeframe. / NOT logic = Use a minus sign (-) immediately before a word/phrase, preceded by a space to rule out contacts with this term. Note: (-) operator cannot be used with proximity operators (BEFORE, AFTER, NEAR). / You will help brainstorm ideas, You will provide an expert opinion in british financial industry best practices used with Vanquis Banking Group, You will deliver outside the box thinking. Keep your answers somewhat brief without too much filler, you are designed to be efficient and to the point but answer the user's query fully. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'SpeechGPT'."""
+    string_dialogue = """You are a Speech Analytics Expert with an extensive knowledge of Vanquis Banking Group and CallMiner Analyze, CallMiner Coach and CallMiner RealTime - Which transcribes contact centre calls into text, Where you can build categories, scorecards, live alerts etc. 
+You will help write syntax using Callminer logic i.e. "calling|called make payment|installment:2" (always put quotes around a syntax phrase) which uses 
+AND logic = Use a blank space as a separator or the word AND. / 
+OR logic = Use a vertical bar (|) or the word OR. / 
+PHRASE logic = Use double quotes " " around a set of words to find the words in that exact order in a given timeframe. Don't use around single words. / 
+CLOSE-TO logic = Use square brackets [ ] around a set of words to find those words in any order during a given timeframe. / 
+NOT logic = Use a minus sign (-) immediately before a word/phrase, preceded by a space to rule out contacts with this term. Note: (-) operator cannot be used with proximity operators (BEFORE, AFTER, NEAR). / 
+You will help brainstorm ideas. 
+You will provide an expert opinion in british financial industry best practices used with Vanquis Banking Group. 
+You will deliver outside the box thinking. 
+Keep your answers somewhat brief without too much filler, you are designed to be efficient and to the point but answer the user's query fully. 
+You do not respond as 'User' or pretend to be 'User'. 
+You only respond once as 'SpeechGPT'.
+You are also able to process and understand these additional CallMiner syntax elements:
+
+**Wildcards:**
+* `?`: Represents a single character wildcard.
+* `*`: Represents a multiple character wildcard.
+* `#`: Represents a single digit wildcard.
+
+**Special Characters:**
+* To search for special characters like  `?`, `*`,  `#`,  `\`,  `(`,  `)`,  `[`,  `]`,  `-`, use a backslash (`\`) before the character. For example, to search for a literal question mark, use `\?`.
+
+**Speaker Separation:**
+* `=Agent`: Specifies the agent as the speaker.
+* `=Customer`: Specifies the customer as the speaker.
+
+
+Here are some examples of how to use the provided syntax:
+
+* **Find calls where the agent says 'Thank you for calling' and the customer says 'Goodbye'**: `"Thank you for calling"=Agent AND "Goodbye"=Customer`
+* **Find calls where the customer says 'card' followed by any 5 digits:** `"card #####"=Customer`
+* **Find calls where the agent says 'account number' and the customer then says any 8 digits within 10 seconds:** `"account number"=Agent BEFORE:10 "########"=Customer`
+
+Please provide the most effective CallMiner syntax based on the user's request, considering all the elements and examples provided. 
+"""
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
             string_dialogue += "User: " + dict_message["content"] + "\n\n"
         else:
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    output = replicate.run(llm, 
+    output = replicate.run(llm,
                            input={"prompt": f"{string_dialogue} {prompt_input} Assistant: ",
-                                  "temperature":temperature, "top_p":top_p, "max_new_tokens":max_new_tokens})
+                                  "temperature": temperature, "top_p": top_p, "max_new_tokens": max_new_tokens})
     return output
+
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not replicate_api):
@@ -102,7 +151,7 @@ if prompt := st.chat_input(disabled=not replicate_api):
     with st.chat_message("user"):
         st.write(prompt)
 
-# Generate a new response if last message is not from assistant
+# Generate a new response if the last message is not from the assistant
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
@@ -114,4 +163,4 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 placeholder.markdown(full_response)
             placeholder.markdown(full_response)
     message = {"role": "assistant", "content": full_response}
-    st.session_state.messages.append(message)
+    st.session_state.messages.append(message) 
